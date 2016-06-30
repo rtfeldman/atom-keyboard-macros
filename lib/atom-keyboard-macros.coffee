@@ -143,7 +143,7 @@ module.exports = AtomKeyboardMacros =
   end_kbd_macro: ->
     window.removeEventListener('keydown', @eventListener, true)
     @keyCaptured = false
-    this.setText('end recording keyboard macros.')
+    @messagePanel.hide()
     @recorder.stop()
     @macroCommands = @recorder.getSequence()
     @find.stopRecording()
