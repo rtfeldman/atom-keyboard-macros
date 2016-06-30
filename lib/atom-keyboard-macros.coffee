@@ -339,13 +339,10 @@ module.exports = AtomKeyboardMacros =
       atom.beep()
       return
     if !@macroCommands || @macroCommands.length == 0
-      this.setText('no keyboard macros.')
       return
 
     # execute macro
-    this.setText('execute keyboard macros.')
     @execute_macro_once()
-    this.setText('macro executed')
 
   #
   # repeat last macro
@@ -355,7 +352,6 @@ module.exports = AtomKeyboardMacros =
       atom.beep()
       return
     if !@macroCommands || @macroCommands.length == 0
-      this.setText('no keyboard macros.')
       return
 
     @repeatCountPanel.show()
@@ -377,28 +373,22 @@ module.exports = AtomKeyboardMacros =
   onGetRepeatCount: (count) ->
     @repeatCountPanel.hide()
     for i in [1..count]
-      @setText("execute keyboard macro #{i}")
       @execute_macro_once()
-    @setText("executed macro #{count} times")
 
   #
   # execute macro to bottom of the editor
   #
   execute_macro_to_bottom: ->
-    this.setText("execute keyboard macro to bottom of the buffer.")
     @util_execute_macro_to_bottom()
-    this.setText("executed keyboard macro to bottom of the buffer.")
 
   #
   # execute macro from top to bottom of the editor
   #
   execute_macro_from_top_to_bottom: ->
-    this.setText("execute keyboard macro from top to bottom of the buffer.")
     editor = atom.workspace.getActiveTextEditor()
     if editor
       editor.moveToTop()
     @util_execute_macro_to_bottom()
-    this.setText("executed keyboard macro from top to bottom of the buffer.")
 
   # Util: execute macro to bottom
   util_execute_macro_to_bottom: ->
