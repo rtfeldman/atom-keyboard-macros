@@ -125,7 +125,7 @@ module.exports = AtomKeyboardMacros =
   # start recording keyborad macros
   #
   start_kbd_macro: ->
-    this.setText('start recording keyboard macros...')
+    this.setText('recording macro...')
     if @keyCaptured
       atom.beep()
       return
